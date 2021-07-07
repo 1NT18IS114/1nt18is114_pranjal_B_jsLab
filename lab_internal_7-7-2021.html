@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h1>Indian Penal Code</h1>
+    <input type="text" id="ipc" placeholder="enter ipc number">
+    <br>
+    <button onclick="myfunc()">search</button>
+
+
+   
+<br>
+<p id="demo"></p>
+<h2>Add an act</h2>
+<input type="text" id="id" placeholder="enter code"></input>
+<input type="text" id="offence" placeholder="enter offence">
+<input type="text" id="punishment" placeholder="enter punishment">
+<button type="submit" onclick="myfunc1()">submit</button>
+<p id="newcodeadded"></p>
+<script>
+    function newcode(id,offence,punishment){
+        this.id=id,
+        this.offence=offence,
+        this.punishment=punishment
+    }
+    const penalcode = [
+    {
+        "id" :"302",
+        "offence":"Murder",
+        "punishment":"Death, or imprisonment for life, and fine"
+    },
+    {
+        "id" :"303",
+        "offence":"Murder by a person under sentence of imprisonment for life",
+        "punishment":"Death, or imprisonment for life, and fine"
+    },
+    {
+        "id":"307",
+        "offence": "Attemp to murder",
+        "punishment":"Imprisonment for 10 years and fine"
+        
+    }
+]
+    function myfunc()
+    {
+console.log(penalcode);
+let y = document.getElementById("ipc").value;
+let x = penalcode.find(penalcode => penalcode.id === y);
+if(x==undefined)
+{
+    document.getElementById("demo").innerHTML="enter valid ipc";
+    document.getElementById("demo").style.backgroundColor="red";
+}
+else
+{
+let z = "IPC : "+x.id+"<br> "+"Offenece : "+x.offence+" "+"<br>"+"Punishment : "+x.punishment;
+document.getElementById("demo").innerHTML = z;
+}
+    }
+
+
+ function myfunc1(){
+let Id=document.getElementById("id").value;
+let Offence=document.getElementById("offence").value
+let Punishment=document.getElementById("punishment").value
+let ob=new newcode(Id,Offence,Punishment);
+penalcode.push(ob);
+document.getElementById("newcodeadded").innerHTML="IPC Code Added"
+console.log(penalcode)
+ }   
+</script>
+
+</body>
+</html>
